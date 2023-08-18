@@ -1,7 +1,7 @@
 from rest_framework.reverse import reverse
 from rest_framework import permissions, generics
 from .permissions import IsOwnerOrReadOnly
-from .serializers import PageSerializer, CreatePageSerializer,CollectionSerializer
+from .serializers import PageSerializer, CreatePageSerializer, CollectionSerializer
 from .models import Page, Collection
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
@@ -54,6 +54,8 @@ class CollectionDetail(generics.RetrieveUpdateDestroyAPIView):
 @api_view(['GET'])
 def api_root(request, format=None):
     return Response({
+        'registration': reverse('registr', request=request, format=format),
+        'create-page': reverse('create-page', request=request, format=format),
         'pages': reverse('page-list', request=request, format=format),
         'collections': reverse('collection-list', request=request, format=format),
     })

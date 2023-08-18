@@ -38,8 +38,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('auth/', include('djoser.urls')),
-    path('registr/', include('users.urls')),
-    path('api/', include('storage.urls')),
+    path('registration/', include('users.urls')),
+    path('', include('storage.urls')),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('docs/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]

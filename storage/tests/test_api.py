@@ -10,7 +10,7 @@ class TestAuthenticatedEndpoint:
     @pytest.fixture(autouse=True)
     def setup(self):
         self.client = APIClient()
-        self.user = User.objects.create_user(username='test',email='test@mail.ru', password='123456')
+        self.user = User.objects.create_user(username='test', email='test@mail.ru', password='123456')
         self.collection = Collection.objects.create(
             title='test collection',
             description='test text',
@@ -37,7 +37,7 @@ class TestAuthenticatedEndpoint:
         assert response.status_code == 200
 
     def test_create_page_endpoint(self):
-        payload = {'link':'https://ria.ru/20210718/proisshestviya-1741778019.html'}
+        payload = {'link': 'https://ria.ru/20210718/proisshestviya-1741778019.html'}
         self.client.force_authenticate(user=self.user)
         url = reverse('create-page')
         response = self.client.post(url, data=payload, format="json")
@@ -65,7 +65,7 @@ class TestAuthenticatedEndpoint:
 
     def test_create_collection_endpoint(self):
         payload = {
-            'title':'test',
+            'title': 'test',
             'description': 'test text',
             "pages": []
         }
@@ -79,7 +79,3 @@ class TestAuthenticatedEndpoint:
         self.client.force_authenticate(user=self.user)
         response = self.client.delete(url)
         assert response.status_code == 204
-
-
-
-

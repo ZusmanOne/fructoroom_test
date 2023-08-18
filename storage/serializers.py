@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Page, Collection
 from opengraph import OpenGraph
+from django.db import transaction
 
 
 def get_page_data(url):
@@ -13,6 +14,7 @@ class CreatePageSerializer(serializers.ModelSerializer):
         model = Page
         fields = ('link',)
 
+    @transaction.atomic
     def save(self, *args, **kwargs):
         url = self.validated_data['link']
         page_data = get_page_data(url)

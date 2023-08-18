@@ -9,7 +9,7 @@ from .views import (PageList,
 
 urlpatterns = [
     path('', api_root, name='api'),
-    path('create-page/', CreatePageView.as_view(), name='create'),
+    path('create_page/', CreatePageView.as_view(), name='create-page'),
     path('pages/', PageList.as_view(), name='page-list'),
     path('page/<int:pk>/', PageDetail.as_view(), name='page-detail'),
     path('collections/', CollectionList.as_view(), name='collection-list'),

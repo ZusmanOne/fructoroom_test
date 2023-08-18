@@ -44,7 +44,7 @@ class TestAuthenticatedEndpoint:
         assert response.status_code == 201
 
     def test_authenticated_collection_detail_endpoint(self):
-        url = reverse('page-detail', kwargs={'pk': self.collection.pk})
+        url = reverse('collection-detail', kwargs={'pk': self.collection.pk})
         self.client.force_authenticate(user=self.user)
         response = self.client.get(url)
         assert response.status_code == 200

@@ -47,7 +47,7 @@ pip install -r requirements.txt
 - `POSTGRES_USER`- имя юзера
 - `POSTGRES_PASSWORD`- пароль юзера
 - `POSTGRES_PORT`-5432
-- `DB_HOST` - localhost
+- `POSTGRES_HOST` - localhost
 
 Учтите, что для локального запуска сервиса, вам нужно предварительно создать локальную БД(postgres)
 
